@@ -1,11 +1,13 @@
 # sweet-player-gif
 
 [![npm version](https://img.shields.io/npm/v/sweet-player-gif.svg)](https://www.npmjs.com/package/sweet-player-gif)
-[![license](https://img.shields.io/npm/l/sweet-player-gif.svg)](https://github.com/leuvi/sweet-player-gif/blob/main/LICENSE)
+[![npm downloads](https://img.shields.io/npm/dw/sweet-player-gif.svg)](https://www.npmjs.com/package/sweet-player-gif)
+[![GitHub stars](https://img.shields.io/github/stars/leuvi/sweet-player-gif?style=social)](https://github.com/leuvi/sweet-player-gif)
+[![license](https://img.shields.io/npm/l/sweet-player-gif.svg)](./LICENSE)
 
 Capture frames from HTML5 `<video>` and generate animated GIFs — powered by Rust WASM for fast encoding.
 
-Part of the sweet-player ecosystem, alongside [sweet-subtitle](https://github.com/leuvi/sweet-subtitle). Works with any `<video>` element, no player coupling required.
+Part of the [sweet-player](https://github.com/leuvi/sweet-player) ecosystem, alongside [sweet-subtitle](https://github.com/leuvi/sweet-subtitle). Works with any `<video>` element, no player coupling required.
 
 ## Install
 
