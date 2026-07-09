@@ -9,7 +9,7 @@ export class SweetPlayerGif {
 
   constructor(video: HTMLVideoElement, options?: SweetPlayerGifOptions) {
     this.options = {
-      duration: options?.duration ?? 3,
+      duration: Math.min(10, Math.max(1, options?.duration ?? 3)),
       fps: options?.fps ?? 10,
       maxWidth: options?.maxWidth ?? 320,
       quality: options?.quality ?? 10,

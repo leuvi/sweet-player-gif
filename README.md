@@ -53,7 +53,7 @@ Creates a new instance bound to a `<video>` element.
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `duration` | `number` | `3` | Seconds of video to buffer |
+| `duration` | `number` | `3` | Seconds of video to buffer (min: 1, max: 10, clamped automatically) |
 | `fps` | `number` | `10` | Frame capture rate |
 | `maxWidth` | `number` | `320` | Max width for scaling (maintains aspect ratio) |
 | `quality` | `number` | `10` | NeuQuant color quantization quality (1 = best/slowest, 30 = fastest/lowest) |

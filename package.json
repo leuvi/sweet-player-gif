@@ -10,7 +10,11 @@
     "build": "pnpm -F sweet-player-gif build",
     "dev": "pnpm -F playground dev",
     "test": "pnpm -F sweet-player-gif test",
-    "typecheck": "pnpm -F sweet-player-gif typecheck"
+    "typecheck": "pnpm -F sweet-player-gif typecheck",
+    "publish:core": "pnpm -F sweet-player-gif publish --access public --no-git-checks",
+    "release:dry": "pnpm -F sweet-player-gif publish --access public --dry-run --no-git-checks",
+    "release": "pnpm run publish:core",
+    "release:one": "pnpm -F sweet-player-gif typecheck && pnpm -F sweet-player-gif build && pnpm run release:dry && pnpm run release"
   },
   "devDependencies": {
     "typescript": "~5.8.0"
