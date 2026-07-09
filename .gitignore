@@ -1,0 +1,11 @@
+node_modules/
+dist/
+pkg/
+target/
+.DS_Store
+*.tsbuildinfo
+
+# Generated WASM artifacts copied into src for dev
+packages/core/src/wasm/wasm_module.js
+packages/core/src/wasm/wasm_module.d.ts
+packages/core/src/wasm/*.wasm

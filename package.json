@@ -1,0 +1,18 @@
+{
+  "name": "sweet-player-gif-workspace",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build:wasm": "cd packages/wasm && wasm-pack build --target web && cd ../.. && node packages/core/scripts/setup-wasm.mjs",
+    "build": "pnpm -F sweet-player-gif build",
+    "dev": "pnpm -F playground dev",
+    "test": "pnpm -F sweet-player-gif test",
+    "typecheck": "pnpm -F sweet-player-gif typecheck"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.0"
+  }
+}

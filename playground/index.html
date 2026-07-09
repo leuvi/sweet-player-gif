@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sweet-player-gif playground</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>sweet-player-gif playground</h1>
+
+    <div class="video-section">
+      <video id="video" controls muted playsinline></video>
+      <div class="file-drop" id="drop-zone">
+        <p>Drag & drop a video file here, or click to select</p>
+        <input type="file" id="file-input" accept="video/*" />
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="btn-start" disabled>Start Capture</button>
+      <button id="btn-capture" disabled>Generate GIF</button>
+      <button id="btn-stop" disabled>Stop</button>
+    </div>
+
+    <div class="status" id="status">Load a video to begin</div>
+
+    <div class="result" id="result" style="display:none">
+      <h2>Generated GIF</h2>
+      <img id="gif-preview" />
+      <br />
+      <a id="gif-download" download="capture.gif">Download GIF</a>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
