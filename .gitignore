@@ -4,6 +4,7 @@ pkg/
 target/
 .DS_Store
 *.tsbuildinfo
+CLAUDE.md
 
 # Generated WASM artifacts copied into src for dev
 packages/core/src/wasm/wasm_module.js
