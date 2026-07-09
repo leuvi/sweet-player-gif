@@ -1,6 +1,6 @@
 {
   "name": "sweet-player-gif",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Capture frames from HTML5 <video> and generate GIF animations via WASM",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -22,8 +22,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepublishOnly": "node -e \"require('fs').copyFileSync('../../README.md','README.md')\" && pnpm -w build:wasm && pnpm build",
-    "postpublish": "node -e \"try{require('fs').unlinkSync('README.md')}catch{}\""
+    "prepublishOnly": "node scripts/copy-readme.mjs copy && pnpm -w build:wasm && pnpm build",
+    "postpublish": "node scripts/copy-readme.mjs clean"
   },
   "keywords": [
     "gif",
