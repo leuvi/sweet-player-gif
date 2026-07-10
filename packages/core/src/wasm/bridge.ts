@@ -1,8 +1,12 @@
+import workerCode from './worker-inline'
+
 let worker: Worker | null = null
 
 function getWorker(): Worker {
   if (!worker) {
-    worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' })
+    const blob = new Blob([workerCode], { type: 'text/javascript' })
+    const url = URL.createObjectURL(blob)
+    worker = new Worker(url)
   }
   return worker
 }
@@ -21,6 +25,7 @@ export function encodeGif(
   }
 
   const delay = Math.round(100 / fps)
+  const wasmUrl = new URL('./sweet_player_gif_wasm_bg.wasm', import.meta.url).href
   const w = getWorker()
 
   return new Promise((resolve, reject) => {
@@ -35,7 +40,7 @@ export function encodeGif(
 
     const buffer = allFrames.buffer
     w.postMessage(
-      { allFrames, width, height, frameCount: frames.length, delay, quality },
+      { allFrames, width, height, frameCount: frames.length, delay, quality, wasmUrl },
       [buffer],
     )
   })

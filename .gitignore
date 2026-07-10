@@ -10,3 +10,4 @@ CLAUDE.md
 packages/core/src/wasm/wasm_module.js
 packages/core/src/wasm/wasm_module.d.ts
 packages/core/src/wasm/*.wasm
+packages/core/src/wasm/worker-inline.ts

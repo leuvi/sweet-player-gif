@@ -1,6 +1,6 @@
 {
   "name": "sweet-player-gif",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Capture frames from HTML5 <video> and generate GIF animations via WASM",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -17,7 +17,7 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "node scripts/setup-wasm.mjs",
+    "prebuild": "node scripts/setup-wasm.mjs && node scripts/build-worker.mjs",
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/leuvi/sweet-player-gif",
   "devDependencies": {
+    "esbuild": "^0.25.0",
     "tsup": "^8.4.0",
     "typescript": "~5.8.0",
     "vitest": "^3.1.0"
