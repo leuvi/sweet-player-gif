@@ -1,5 +1,5 @@
 import { FrameCapture } from './frame-capture'
-import { encodeGif } from './wasm/bridge'
+import { encodeGif, terminateWorker } from './wasm/bridge'
 import type { SweetPlayerGifOptions, ResolvedOptions } from './types'
 
 export class SweetPlayerGif {
@@ -42,5 +42,6 @@ export class SweetPlayerGif {
   destroy(): void {
     this.stop()
     this.frameCapture.destroy()
+    terminateWorker()
   }
 }

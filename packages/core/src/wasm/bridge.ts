@@ -1,25 +1,19 @@
-import __wbg_init, { encode_gif } from './wasm_module'
+let worker: Worker | null = null
 
-let wasmReady: Promise<unknown> | null = null
-
-async function loadWasm(): Promise<void> {
-  if (wasmReady) {
-    await wasmReady
-    return
+function getWorker(): Worker {
+  if (!worker) {
+    worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' })
   }
-  wasmReady = __wbg_init()
-  await wasmReady
+  return worker
 }
 
-export async function encodeGif(
+export function encodeGif(
   frames: Uint8Array[],
   width: number,
   height: number,
   fps: number,
   quality: number,
 ): Promise<Uint8Array> {
-  await loadWasm()
-
   const frameSize = width * height * 4
   const allFrames = new Uint8Array(frames.length * frameSize)
   for (let i = 0; i < frames.length; i++) {
@@ -27,5 +21,29 @@ export async function encodeGif(
   }
 
   const delay = Math.round(100 / fps)
-  return encode_gif(allFrames, width, height, frames.length, delay, quality)
+  const w = getWorker()
+
+  return new Promise((resolve, reject) => {
+    w.onmessage = (e: MessageEvent) => {
+      if (e.data.error) {
+        reject(new Error(e.data.error))
+      } else {
+        resolve(new Uint8Array(e.data.buffer))
+      }
+    }
+    w.onerror = (e) => reject(new Error(e.message))
+
+    const buffer = allFrames.buffer
+    w.postMessage(
+      { allFrames, width, height, frameCount: frames.length, delay, quality },
+      [buffer],
+    )
+  })
+}
+
+export function terminateWorker(): void {
+  if (worker) {
+    worker.terminate()
+    worker = null
+  }
 }
