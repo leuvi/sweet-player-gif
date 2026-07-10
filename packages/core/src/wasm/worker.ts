@@ -7,7 +7,7 @@ async function loadWasm(wasmUrl?: string): Promise<void> {
     await wasmReady
     return
   }
-  wasmReady = __wbg_init(wasmUrl)
+  wasmReady = __wbg_init(wasmUrl ? { module_or_path: wasmUrl } : undefined)
   await wasmReady
 }
 

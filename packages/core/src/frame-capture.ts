@@ -27,12 +27,12 @@ export class FrameCapture {
 
     if (typeof OffscreenCanvas !== 'undefined') {
       this.canvas = new OffscreenCanvas(this.width, this.height)
-      this.ctx = this.canvas.getContext('2d')!
+      this.ctx = this.canvas.getContext('2d', { willReadFrequently: true })!
     } else {
       this.canvas = document.createElement('canvas')
       this.canvas.width = this.width
       this.canvas.height = this.height
-      this.ctx = this.canvas.getContext('2d')!
+      this.ctx = this.canvas.getContext('2d', { willReadFrequently: true })!
     }
 
     this.ringBuffer = new RingBuffer(options.duration * options.fps)
